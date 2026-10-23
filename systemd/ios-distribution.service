@@ -1,0 +1,18 @@
+[Unit]
+Description=Personal iOS distribution static server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/ios-distribution
+ExecStart=/usr/bin/python3 %h/ios-distribution/scripts/serve.py
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

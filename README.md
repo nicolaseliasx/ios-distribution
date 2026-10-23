@@ -33,5 +33,22 @@ that **Verificar conexão** reaches `termix.ncls.cc`. Report the exact SideStore
 error if installation fails. Refreshing the free Apple Account signature is a
 separate action from installing a new app version.
 
-This repository does not yet publish a SideStore source or claim a successful
-device install. Hosting and automated updates follow the real-device test.
+The catalog is available, but a successful real-device install has not yet
+been verified.
+
+## Public distribution server
+
+The `devhub` VM serves only static public files at [ios.ncls.cc](https://ios.ncls.cc/)
+through the existing Cloudflare Tunnel. The Python HTTP service binds to
+`127.0.0.1:18090`; the tunnel is the only public entry point. Its user-level
+systemd unit and release-sync timer are in `systemd/`. The timer checks public
+GitHub releases every 15 minutes and mirrors an IPA only after its SHA-256,
+size, bundle identifier, version, and iPhone platform pass validation. It
+updates `source.json` after the IPA has been published atomically. Old release
+files are retained for rollback.
+
+The source can be added directly in SideStore from [ios.ncls.cc](https://ios.ncls.cc/)
+after SideStore is installed. The first real-device install remains unverified.
+All files under `public/releases/`, plus the generated catalog files, are
+runtime outputs and are intentionally ignored by Git. The server uses no
+Cloudflare or GitHub token to serve or mirror public files.

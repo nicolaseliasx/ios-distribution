@@ -1,0 +1,19 @@
+{
+  "name": "NCLS iOS",
+  "subtitle": "Aplicativos pessoais para iPhone",
+  "description": "Versões de teste e aplicativos pessoais distribuídos pelo SideStore.",
+  "website": "https://ios.ncls.cc/",
+  "apps": [
+    {
+      "slug": "proxmox-app-test",
+      "name": "ProxmoxAppTest",
+      "bundleIdentifier": "cc.ncls.iosdist.proxmoxapptest",
+      "developerName": "nicolas",
+      "subtitle": "Teste de instalação no iPhone",
+      "localizedDescription": "Verifica instalação pelo SideStore e conexão com o servidor.",
+      "icon": "icons/proxmox-app-test.png",
+      "category": "utilities",
+      "githubRepo": "nicolaseliasx/ios-distribution"
+    }
+  ]
+}

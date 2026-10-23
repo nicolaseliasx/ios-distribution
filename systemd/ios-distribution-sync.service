@@ -1,0 +1,10 @@
+[Unit]
+Description=Synchronize public iOS releases from GitHub
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/ios-distribution
+ExecStart=/usr/bin/python3 %h/ios-distribution/scripts/sync_releases.py
+NoNewPrivileges=true
