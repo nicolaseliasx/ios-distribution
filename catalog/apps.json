@@ -13,7 +13,20 @@
       "localizedDescription": "Verifica instalação pelo SideStore e conexão com o servidor.",
       "icon": "icons/proxmox-app-test.png",
       "category": "utilities",
-      "githubRepo": "nicolaseliasx/ios-distribution"
+      "githubRepo": "nicolaseliasx/ios-distribution",
+      "minOSVersion": "17.0"
+    },
+    {
+      "slug": "termix-ncls",
+      "name": "Termix NCLS",
+      "bundleIdentifier": "cc.ncls.termix.mobile",
+      "developerName": "nicolas",
+      "subtitle": "Servidor, Codex e sessões persistentes",
+      "localizedDescription": "Acesse sessões persistentes do Termix e acompanhe Codex e Codex2 no iPhone.",
+      "icon": "icons/termix-ncls.png",
+      "category": "utilities",
+      "githubRepo": "nicolaseliasx/Mobile",
+      "minOSVersion": "15.1"
     }
   ]
 }

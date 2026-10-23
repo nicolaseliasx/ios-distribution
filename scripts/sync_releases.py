@@ -136,7 +136,7 @@ def rebuild_catalog(config: dict, public: Path, base_url: str) -> None:
                 "localizedDescription": "Versão distribuída pelo SideStore.",
                 "downloadURL": f"{base_url}/releases/{app['slug']}/{version_dir}/app.ipa",
                 "size": item["sizeBytes"],
-                "minOSVersion": "17.0",
+                "minOSVersion": app.get("minOSVersion", "17.0"),
             })
         if not versions:
             continue
