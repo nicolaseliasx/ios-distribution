@@ -31,7 +31,7 @@ class DistributionHandler(SimpleHTTPRequestHandler):
             return
         if path == "/":
             self.path = "/index.html"
-        elif path in ("/source.json", "/latest.json"):
+        elif path in ("/source.json", "/latest.json", "/status.json"):
             self.path = path
         elif path.startswith("/icons/") or path.startswith("/releases/"):
             self.path = path

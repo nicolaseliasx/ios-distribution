@@ -36,6 +36,22 @@ separate action from installing a new app version.
 The catalog is available, but a successful real-device install has not yet
 been verified.
 
+## Termix NCLS
+
+The Termix NCLS release is listed in the same SideStore catalog at
+[ios.ncls.cc](https://ios.ncls.cc/). Its Sessions screen restores persistent
+server sessions and shows the Codex and Codex2 quotas. The iOS Codex widget
+reads [status.json](https://ios.ncls.cc/status.json) every few minutes, so it
+can update while Termix is closed. The file is deliberately public and contains
+only status, remaining percentages, session counts, and the check time. It
+contains no credentials, email addresses, or session names. If an update fails,
+the last file becomes visibly stale in the widget.
+
+The user-level `ios-distribution-status.timer` regenerates this file every three
+minutes. The unsigned IPA is built on a macOS GitHub Actions runner and checked
+for its WidgetKit extension before release. Installation and widget rendering
+on a physical iPhone still require a real-device check.
+
 ## Public distribution server
 
 The `devhub` VM serves only static public files at [ios.ncls.cc](https://ios.ncls.cc/)

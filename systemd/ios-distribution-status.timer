@@ -1,0 +1,10 @@
+[Unit]
+Description=Refresh public Codex widget status
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=3min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

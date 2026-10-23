@@ -13,3 +13,4 @@ __pycache__/
 public/releases/*
 public/source.json
 public/latest.json
+public/status.json

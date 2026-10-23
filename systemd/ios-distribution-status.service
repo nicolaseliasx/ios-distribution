@@ -1,0 +1,8 @@
+[Unit]
+Description=Publish redacted Codex status for the iPhone widget
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/ios-distribution
+ExecStart=/usr/bin/python3 %h/ios-distribution/scripts/publish_status.py
+NoNewPrivileges=true
