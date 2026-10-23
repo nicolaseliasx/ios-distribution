@@ -1,0 +1,12 @@
+.DS_Store
+*.xcodeproj/
+build/
+dist/
+*.ipa
+*.mobileprovision
+*.p12
+*.p8
+*.key
+.env
+.env.*
+__pycache__/

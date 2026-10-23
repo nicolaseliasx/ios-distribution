@@ -1,0 +1,49 @@
+name: Build iOS proof of concept
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/ios-poc.yml"
+      - "project.yml"
+      - "ProxmoxAppTest/**"
+      - "scripts/validate_ipa.py"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate Xcode project
+        run: xcodegen generate
+      - name: Build for iPhone without signing
+        run: |
+          xcodebuild -version
+          xcodebuild \
+            -project ProxmoxAppTest.xcodeproj \
+            -scheme ProxmoxAppTest \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+      - name: Package and validate IPA
+        run: |
+          mkdir -p dist/Payload
+          cp -R build/Build/Products/Release-iphoneos/ProxmoxAppTest.app dist/Payload/
+          (cd dist && zip -qry ProxmoxAppTest-0.1.0-1.ipa Payload)
+          python3 scripts/validate_ipa.py dist/ProxmoxAppTest-0.1.0-1.ipa
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ProxmoxAppTest-0.1.0-1
+          path: |
+            dist/*.ipa
+            dist/*.json
+          if-no-files-found: error

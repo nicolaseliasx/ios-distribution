@@ -1,0 +1,26 @@
+name: ProxmoxAppTest
+options:
+  deploymentTarget:
+    iOS: "17.0"
+targets:
+  ProxmoxAppTest:
+    type: application
+    platform: iOS
+    sources:
+      - ProxmoxAppTest
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: cc.ncls.iosdist.proxmoxapptest
+        SWIFT_VERSION: 5.0
+        MARKETING_VERSION: 0.1.0
+        CURRENT_PROJECT_VERSION: 1
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: ProxmoxAppTest
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGNING_ALLOWED: NO
+schemes:
+  ProxmoxAppTest:
+    build:
+      targets:
+        ProxmoxAppTest: all
