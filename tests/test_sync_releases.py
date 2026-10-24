@@ -75,6 +75,7 @@ class SyncReleasesTest(unittest.TestCase):
         self.assertEqual(item["version"], "0.1.0")
         self.assertEqual(item["buildVersion"], "1")
         self.assertEqual(item["size"], len(self.ipa))
+        self.assertEqual(item["sha256"], self.metadata["sha256"])
         self.assertEqual(item["downloadURL"],
                          "https://ios.ncls.cc/releases/proxmox-app-test/0.1.0-1/app.ipa")
 
